@@ -1,0 +1,181 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: gainsboro;
+}
+
+.postCard {
+    width: 50%;
+    margin: 20px auto;
+    background-color: whitesmoke;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 20px;
+}
+
+.time {
+    font-size: 12px;
+    color: gray;
+    text-align: left;
+    padding: 5px 0px;
+}
+
+.postHead {
+    margin: 10px 0px;
+}
+
+.postFooter {
+    display: flex;
+    /* justify-content: space-between; */
+    width: 100%;
+
+}
+
+.postFooter>button {
+    margin: 10px 10px 5px;
+    width: 70px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 0px;
+    background-color: lightseagreen;
+    font-size: 15px;
+    font-weight: bold;
+    color: whitesmoke;
+}
+
+.postingDiv {
+    position: sticky;
+    top: 0px;
+    width: 100%;
+    height: fit-content;
+    z-index: 1;
+    padding: 5px 0px;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.postingForm {
+    height: 100%;
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.postingDiv textarea {
+    margin: 10px auto;
+    font-size: 18px;
+    background-color: whitesmoke;
+    width: 50%;
+    height: 150px;
+    padding: 20px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0px 0px 20px 5px gray;
+    outline: none;
+}
+
+.postingDiv .btnDiv {
+    width: 50%;
+    margin: 5px auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.postDiv {
+    padding: 30px 0px;
+}
+
+.postingBtn {
+    width: 70px;
+    padding: 10px;
+    margin: 10px 50px;
+    border-radius: 10px;
+    border: 0px;
+    background-color: lightseagreen;
+    font-size: 15px;
+    font-weight: bold;
+    color: whitesmoke;
+    backdrop-filter: blur(10px);
+}
+
+.shareBtn {
+    width: 70px;
+    padding: 10px;
+    margin: 10px 20px;
+    border-radius: 10px;
+    border: 0px;
+    background-color: lightseagreen;
+    font-size: 15px;
+    font-weight: bold;
+    color: whitesmoke;
+
+}
+
+.postUpdateBtn {
+    width: 70px;
+    padding: 10px;
+    margin: 10px 20px;
+    border-radius: 10px;
+    border: 0px;
+    background-color: lightseagreen;
+    font-size: 15px;
+    font-weight: bold;
+    color: whitesmoke;
+
+}
+
+button:hover {
+    width: 80px;
+    padding: 10px;
+    font-size: 18px;
+    box-shadow: 0px 0px 10px 10px lightseagreen;
+    background-color: white;
+    color: lightseagreen;
+    /* background: linear-gradient( to right , white ,lightseagreen); */
+    transition: 1s ease;
+}
+
+.postHead {
+    width: 100%;
+}
+
+.postTitle {
+    width: 90%;
+    font-weight: 500;
+    font-size: 25px;
+    margin: 10px auto;
+    height: fit-content;
+    text-align: left;
+    word-wrap: break-word;
+}
+
+.postUpdateForm {
+    width: 100%;
+}
+
+.postCard textarea {
+    margin: 10px auto;
+    font-size: 18px;
+    background-color: whitesmoke;
+    width: 50%;
+    min-width: 30%;
+    max-width: 70%;
+    max-height: 450px;
+    min-height: 100px;
+    height: auto;
+    padding: 15px 20px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0px 0px 20px 5px gray;
+    outline: none;
+
+}
