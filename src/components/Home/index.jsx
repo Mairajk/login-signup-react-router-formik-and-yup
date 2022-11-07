@@ -3,6 +3,7 @@ import "./style.css"
 
 import moment from "moment";
 import { useEffect, useState } from "react";
+import axios from "axios"
 
 import { initializeApp } from "firebase/app";
 import {
@@ -46,6 +47,8 @@ const Home = () => {
         editingId: null,
         editingText: ""
     });
+
+    const [postPic, setPostPic] = useState(null);
 
 
     useEffect(() => {
@@ -102,19 +105,39 @@ const Home = () => {
     const savePost = async (e) => {
         e.preventDefault();
 
-        console.log("postText : ", postText);
+        const cloudinaryData = new FormData();
+        cloudinaryData.append("file", postPic);
+        cloudinaryData.append("upload_preset", "profilePicDemo");
+        cloudinaryData.append("cloud_name", "dzy6qrpp5");
+        console.log(cloudinaryData);
+        axios.post(`https://api.cloudinary.com/v1_1/dzy6qrpp5/image/upload`,
+            cloudinaryData,
+            {
+                headers: { 'Content-Type': 'multipart/form-data' }
+            })
 
-        try {
-            const docRef = await addDoc(collection(db, "posts"), {
-                text: postText,
-                createdOn: new Date()
-            });
-            console.log("Document written with ID: ", docRef.id);
-        }
-        catch (e) {
-            console.error("Error adding document: ", e);
-        }
-        setPosting(!isPosting)
+            .then(async res => {
+
+
+                console.log("postText : ", postText);
+
+                try {
+                    const docRef = await addDoc(collection(db, "posts"), {
+                        text: postText,
+                        createdOn: new Date(),
+                        image: res?.data?.url
+                    });
+                    console.log("Document written with ID: ", docRef.id);
+                }
+                catch (e) {
+                    console.error("Error adding document: ", e);
+                }
+                setPosting(!isPosting)
+            })
+
+            .catch(err => {
+                console.log(err);
+            })
     }
 
     const deletePost = async (postId) => {
@@ -149,17 +172,27 @@ const Home = () => {
 
                 {(isPosting) ?
                     <form action="" className="postingForm" onSubmit={savePost}>
-                        <textarea
-                            className="postInput"
-                            autoFocus
-                            type="text"
-                            required
-                            max={100}
-                            onChange={(e) => {
-                                setPostText(e.target.value)
-                            }}
 
-                        />
+                        <div className="inputArea">
+                            <textarea
+                                className="postInput"
+                                autoFocus
+                                type="text"
+                                required
+                                max={100}
+                                onChange={(e) => {
+                                    setPostText(e.target.value)
+                                }}
+
+                            />
+
+                            <input type="file"
+                                className="postPic"
+                                onChange={(e) => {
+                                    setPostPic(e.currentTarget.files[0])
+                                }}
+                            />
+                        </div>
 
                         <div className="btnDiv">
 
@@ -220,6 +253,8 @@ const Home = () => {
                             }
                         </div>
 
+                        <img src={eachPost.image} alt="" className="postImage" />
+
                         <div className="postFooter">
                             <button className="dltBtn" onClick={() => {
                                 deletePost(eachPost?.id)
@@ -251,6 +286,7 @@ const Home = () => {
         </div>
 
     )
+
 }
 
 export default Home;
