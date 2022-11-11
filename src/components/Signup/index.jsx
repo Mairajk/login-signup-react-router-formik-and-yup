@@ -125,7 +125,7 @@ const Signup = (props) => {
                         // value={formik.values.gender} 
                         onChange={(e) => { formik.values.gender = e.target.value }}
                     >
-                        <option 
+                        <option
                         // disabled selected
                         > Your Gender </option>
                         <option value="male" > Male </option>

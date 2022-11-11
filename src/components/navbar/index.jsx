@@ -19,37 +19,43 @@ const Navbar = () => {
 
     return (
         <div className="page">
-            <nav>  {
-                (isLogin) ?
-                    <ul>
-                        <li><Link to={`/`}>Home</Link></li>
-                        <li><Link to={`/about`}>About</Link></li>
-                        <li><Link to={`/gallery`}>Gallery</Link></li>
-                        <li
-                            onClick={() => {
-                                setIsLogin(!isLogin)
-                            }}>
-                            <Link to={`/`}>Logout</Link></li>
-                    </ul>
-                    :
-                    <ul>
-                        {(isSignup) ?
-                            <li
-                                onClick={() => {
-                                    setIsSignup(!isSignup)
-                                }}>
-                                <Link to={`/`}>Signup</Link></li>
-                            :
-                            <li
-                                onClick={() => {
-                                    setIsSignup(!isSignup)
-                                }}>
-                                <Link to={`/login`}>Already have an account</Link></li>
-                        }
-                    </ul>
+            <div className="header">
+                <h1>Posting App</h1>
+                {
+                    (isLogin) ?
+                        <nav>
+                            <ul>
+                                <li><Link to={`/`}>Home</Link></li>
+                                <li><Link to={`/about`}>About</Link></li>
+                                <li><Link to={`/gallery`}>Gallery</Link></li>
+                                <li
+                                    onClick={() => {
+                                        setIsLogin(!isLogin)
+                                    }}>
+                                    <Link to={`/`}>Logout</Link></li>
+                            </ul>
+                        </nav>
+                        :
+                        <nav>
+                            <ul>
+                                {(isSignup) ?
+                                    <li
+                                        onClick={() => {
+                                            setIsSignup(!isSignup)
+                                        }}>
+                                        <Link to={`/`}>Signup</Link></li>
+                                    :
+                                    <li
+                                        onClick={() => {
+                                            setIsSignup(!isSignup)
+                                        }}>
+                                        <Link to={`/login`}>Already have an account</Link></li>
+                                }
+                            </ul>
 
-            }
-            </nav>
+                        </nav>
+                }
+            </div>
 
             {
                 (isLogin) ?

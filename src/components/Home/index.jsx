@@ -14,7 +14,7 @@ import {
     doc,
     query,
     onSnapshot,
-    serverTimestamp,
+    // serverTimestamp,
     updateDoc,
     deleteDoc,
     orderBy
@@ -168,7 +168,7 @@ const Home = () => {
             <div className="postingDiv"
                 style={isPosting ?
                     { backgroundColor: "gainsboro" } :
-                    { backgroundColor: "whitesmoke" }}>
+                    { backgroundColor: "" }}>
 
                 {(isPosting) ?
                     <form action="" className="postingForm" onSubmit={savePost}>
